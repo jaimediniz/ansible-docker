@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Ensure curl is installed
+      apt: name=curl state=present
