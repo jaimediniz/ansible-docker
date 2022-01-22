@@ -22,12 +22,24 @@ RUN apt-get update && \
         virtualenv && \
     apt-get clean all
 
+ENV HOME=/home/nonroot \
+    USER_NAME=nonroot \
+    USER_GROUP=root
+
 RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
     mkdir /var/run/sshd && \
-    mkdir /root/.ssh && \
     sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
+    sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && \
+    useradd -ms /bin/bash -G ${USER_GROUP} ${USER_NAME} && \
+    chown -R ${USER_NAME}:${USER_GROUP} /etc/ssh && \
+    mkdir -p ${HOME}/.ssh
 
-COPY --chmod=400 id_rsa.pub /root/.ssh/authorized_keys
+COPY --chown=${USER_NAME}:${USER_GROUP} \
+     --chmod=440 \
+     id_rsa.pub ${HOME}/.ssh/authorized_keys
+
+USER ${USER_NAME}
+WORKDIR ${HOME}
+
 EXPOSE 22 
 CMD ["/usr/sbin/sshd", "-D"]
