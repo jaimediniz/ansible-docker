@@ -14,4 +14,4 @@ ping:
 	cd ansible && ansible all -m ping && cd .. || cd ..
 
 playbook:
-	cd ansible && ansible-playbook -v ./playbooks/main.yml && cd .. || cd ..
+	cd ansible && ansible-playbook -v ./playbooks.yml && cd .. || cd ..
