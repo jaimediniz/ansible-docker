@@ -19,8 +19,7 @@ RUN apt-get update && \
         libssl-dev \
         libyaml-dev \
         libffi-dev \
-        zlib1g-dev \
-        virtualenv && \
+        zlib1g-dev && \
     apt-get clean all
 
 ENV HOME=/home/nonroot \

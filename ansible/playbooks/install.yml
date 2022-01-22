@@ -1,6 +1,19 @@
 ---
-- hosts: all
+- name: Ensure installation
+  hosts: all
   become: yes
   tasks:
-    - name: Ensure curl is installed
-      apt: name=curl state=present
+    - name: Update_cache if the last one is more than 3600 seconds ago
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+    
+    - name: Ensure virtualenv is installed
+      apt: 
+        name: virtualenv
+        state: present
+
+    - name: Ensure python3 is updated
+      apt: 
+        name: python3
+        state: latest
