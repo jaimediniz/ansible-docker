@@ -1,5 +1,6 @@
 FROM ubuntu:20.04
 
+# Install packages
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --upgrade \
         sudo \
@@ -26,14 +27,20 @@ ENV HOME=/home/nonroot \
     USER_NAME=nonroot \
     USER_GROUP=root
 
+# Create nonroot user
+RUN useradd -ms /bin/bash -G ${USER_GROUP} ${USER_NAME} && \
+    adduser ${USER_NAME} sudo && \
+    echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+# Configure ssh
 RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
     mkdir /var/run/sshd && \
     sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && \
-    useradd -ms /bin/bash -G ${USER_GROUP} ${USER_NAME} && \
     chown -R ${USER_NAME}:${USER_GROUP} /etc/ssh && \
     mkdir -p ${HOME}/.ssh
 
+# Add SSH key
 COPY --chown=${USER_NAME}:${USER_GROUP} \
      --chmod=440 \
      id_rsa.pub ${HOME}/.ssh/authorized_keys
