@@ -1,9 +1,8 @@
 remove=command --become
 
 docker-build:
-	cd docker
-	docker build -t test-server . || cd .. && exit 1
-	cd .. 
+	cd docker && \
+	docker build -t test-server .
 
 docker-test:
 	docker run -it test-server /bin/bash
@@ -15,29 +14,26 @@ down:
 	docker-compose -f ./docker/docker-compose.yaml down 
 
 ping:
-	cd ansible
-	ansible all -m ping || cd .. && exit 1
-	cd ..
+	cd ansible && \
+	ansible all -m ping
 
 command:
 	# make command apt-get install docker -- -y --become
-	cd ansible && ansible all $(findstring --become, $(MAKECMDGOALS)) -m command -a "$(filter-out $(remove), $(MAKECMDGOALS))" && cd .. || cd ..
+	cd ansible && \
+	ansible all $(findstring --become, $(MAKECMDGOALS)) -m command -a "$(filter-out $(remove), $(MAKECMDGOALS))"
 
 playbooks:
-	cd ansible
-	ansible-playbook -v ./playbooks.yml || cd .. && exit 1
-	cd .. 
+	cd ansible && \
+	ansible-playbook -v ./playbooks.yaml
 
 test:
 	# make test create-folder
-	cd ansible
-	ansible-playbook -v ./playbooks/$(filter-out test, $(MAKECMDGOALS)).yml || cd .. && exit 1
-	cd ..
+	cd ansible && \
+	ansible-playbook -v ./playbooks/$(filter-out test, $(MAKECMDGOALS)).yml
 
 install-dependencies:
-	cd ansible
-	#ansible-galaxy collection install community.sops || cd .. && exit 1
-	cd .. 
+	cd ansible && \
+	ansible-galaxy collection install community.sops
 
 %:
 	@true
