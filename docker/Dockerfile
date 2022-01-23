@@ -24,10 +24,11 @@ RUN apt-get update && \
 
 ENV HOME=/home/nonroot \
     USER_NAME=nonroot \
-    USER_GROUP=root
+    USER_ID=1000 \
+    GROUP_ID=0
 
 # Create nonroot user
-RUN useradd -ms /bin/bash -G ${USER_GROUP} ${USER_NAME} && \
+RUN useradd -ms /bin/bash -u ${USER_ID} -g ${GROUP_ID} ${USER_NAME} && \
     adduser ${USER_NAME} sudo && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
@@ -36,11 +37,11 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
     mkdir /var/run/sshd && \
     sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && \
-    chown -R ${USER_NAME}:${USER_GROUP} /etc/ssh && \
+    chown -R ${USER_NAME}:${GROUP_ID} /etc/ssh && \
     mkdir -p ${HOME}/.ssh
 
 # Add SSH key
-COPY --chown=${USER_NAME}:${USER_GROUP} \
+COPY --chown=${USER_NAME}:${GROUP_ID} \
      --chmod=440 \
      id_rsa.pub ${HOME}/.ssh/authorized_keys
 

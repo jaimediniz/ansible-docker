@@ -7,13 +7,16 @@
       apt:
         update_cache: yes
         cache_valid_time: 3600
-    
-    - name: Ensure virtualenv is installed
+
+    - name: Ensure jq is updated
       apt: 
-        name: virtualenv
+        name: jq
         state: present
 
-    - name: Ensure python3 is updated
-      apt: 
-        name: python3
-        state: latest
+    - name: Download sops binary
+      get_url:
+        url: https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
+        dest: /usr/bin/sops
+        owner: root
+        group: root
+        mode: u+rwx,go=rx
