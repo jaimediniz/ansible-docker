@@ -24,7 +24,7 @@ command:
 
 playbooks:
 	cd ansible && \
-	ansible-playbook -v ./playbooks.yaml
+	ansible-playbook -v ./playbooks.yml
 
 test:
 	# make test create-folder
