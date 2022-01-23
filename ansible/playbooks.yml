@@ -2,3 +2,4 @@
 - import_playbook: ./playbooks/host-info.yml
 - import_playbook: ./playbooks/install.yml
 - import_playbook: ./playbooks/create-folder.yml
+- import_playbook: ./playbooks/sops.yml
