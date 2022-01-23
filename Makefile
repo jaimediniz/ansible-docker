@@ -1,3 +1,5 @@
+remove=command --become
+
 docker-build:
 	cd docker && docker build -t test-server . && cd .. || cd ..
 
@@ -14,8 +16,8 @@ ping:
 	cd ansible && ansible all -m ping && cd .. || cd ..
 
 command:
-	# make command o="--become" c="apt-get install python3" 
-	cd ansible && ansible all $(o) -m command -a "$(c)" && cd .. || cd ..
+	# make command apt-get install python3 -- --become 
+	cd ansible && ansible all $(findstring --become, $(MAKECMDGOALS)) -m command -a "$(filter-out $(remove), $(MAKECMDGOALS))" && cd .. || cd ..
 
 playbooks:
 	cd ansible && ansible-playbook -v ./playbooks.yml && cd .. || cd ..
