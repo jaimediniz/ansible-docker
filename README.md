@@ -2,8 +2,8 @@
 
 ## Steps
 
-1. `make build`
-1. `make up`
+1. `make docker-build`
+1. `make docker-up`
 1. `make playbooks`
 
 links: 
