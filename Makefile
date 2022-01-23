@@ -16,7 +16,7 @@ ping:
 	cd ansible && ansible all -m ping && cd .. || cd ..
 
 command:
-	# make command apt-get install python3 -- --become 
+	# make command apt-get install python3 -- --become
 	cd ansible && ansible all $(findstring --become, $(MAKECMDGOALS)) -m command -a "$(filter-out $(remove), $(MAKECMDGOALS))" && cd .. || cd ..
 
 playbooks:
@@ -24,3 +24,6 @@ playbooks:
 
 test:
 	cd ansible && ansible-playbook -v ./playbooks/create-folder.yml && cd .. || cd ..
+
+%:
+	@true
