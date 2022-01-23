@@ -4,7 +4,7 @@
 
 1. `make build`
 1. `make up`
-1. `make playbook`
+1. `make playbooks`
 
 links: 
  * https://davidcarrascal.medium.com/a-simple-ansible-playground-using-docker-eeb458cbba32
