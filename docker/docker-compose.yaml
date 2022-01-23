@@ -6,7 +6,7 @@ services:
     ports:
       - "2224:22"
   server2.test:
-      image: test-server
-      hostname: server2.test
-      ports:
-        - "2225:22"
+    image: test-server
+    hostname: server2.test
+    ports:
+      - "2225:22"
