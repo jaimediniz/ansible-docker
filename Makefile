@@ -13,6 +13,10 @@ docker-down:
 ping:
 	cd ansible && ansible all -m ping && cd .. || cd ..
 
+command:
+	# make command o="--become" c="apt-get install python3" 
+	cd ansible && ansible all $(o) -m command -a "$(c)" && cd .. || cd ..
+
 playbooks:
 	cd ansible && ansible-playbook -v ./playbooks.yml && cd .. || cd ..
 
