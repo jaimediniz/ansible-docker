@@ -1,17 +1,20 @@
-build:
+docker-build:
 	cd docker && docker build -t test-server . && cd .. || cd ..
 
-test:
+docker-test:
 	docker run -it test-server /bin/bash
 
-up:
+docker-up:
 	docker-compose -f ./docker/docker-compose.yaml up -d
 
-down:
+docker-down:
 	docker-compose -f ./docker/docker-compose.yaml down 
 
 ping:
 	cd ansible && ansible all -m ping && cd .. || cd ..
 
-playbook:
+playbooks:
 	cd ansible && ansible-playbook -v ./playbooks.yml && cd .. || cd ..
+
+test:
+	cd ansible && ansible-playbook -v ./playbooks/create-folder.yml && cd .. || cd ..

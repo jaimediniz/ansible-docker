@@ -1,0 +1,19 @@
+
+---
+- name: Ensure installation
+  hosts: all
+  become: yes
+  tasks:
+    - name: Display all variables/facts known for a host
+      debug:
+        var: hostvars[inventory_hostname]
+        verbosity: 4
+
+    - name: Get uptime information
+      shell: /usr/bin/uptime
+      register: result
+
+    - name: Print uptime information
+      debug:
+        var: result.stdout
+        verbosity: 1

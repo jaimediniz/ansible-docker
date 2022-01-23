@@ -1,0 +1,24 @@
+---
+- name: Test nonroot user
+  hosts: all
+  vars:
+    PATH: "/home/nonroot/test"
+  tasks:
+    - name: Creates directory
+      register: new
+      file:
+        path: "{{PATH}}"
+        state: directory
+        recurse: yes
+
+    - debug:
+        var: new.diff
+        verbosity: 1
+
+    - name: Check folders permission
+      command: "ls -la {{PATH}}"
+      register: ls
+
+    - debug:
+        var: ls.stdout_lines
+        verbosity: 1
