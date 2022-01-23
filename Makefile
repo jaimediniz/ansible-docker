@@ -6,10 +6,10 @@ docker-build:
 docker-test:
 	docker run -it test-server /bin/bash
 
-docker-up:
+up:
 	docker-compose -f ./docker/docker-compose.yaml up -d
 
-docker-down:
+down:
 	docker-compose -f ./docker/docker-compose.yaml down 
 
 ping:
