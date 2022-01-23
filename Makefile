@@ -16,14 +16,15 @@ ping:
 	cd ansible && ansible all -m ping && cd .. || cd ..
 
 command:
-	# make command apt-get install python3 -- --become
+	# make command apt-get install docker -- -y --become
 	cd ansible && ansible all $(findstring --become, $(MAKECMDGOALS)) -m command -a "$(filter-out $(remove), $(MAKECMDGOALS))" && cd .. || cd ..
 
 playbooks:
 	cd ansible && ansible-playbook -v ./playbooks.yml && cd .. || cd ..
 
 test:
-	cd ansible && ansible-playbook -v ./playbooks/create-folder.yml && cd .. || cd ..
+	# make test create-folder
+	cd ansible && ansible-playbook -v ./playbooks/$(filter-out test, $(MAKECMDGOALS)).yml && cd .. || cd ..
 
 %:
 	@true
