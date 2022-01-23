@@ -8,7 +8,7 @@
         update_cache: yes
         cache_valid_time: 3600
 
-    - name: Ensure jq is updated
+    - name: Ensure jq is present
       apt: 
         name: jq
         state: present
