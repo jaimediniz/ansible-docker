@@ -1,12 +1,17 @@
 version: '2'
 services:
-  server1.test:
+  app1.test:
     image: test-server
-    hostname: server1.test
+    hostname: app1.test
     ports:
       - "2224:22"
-  server2.test:
+  app2.test:
     image: test-server
-    hostname: server2.test
+    hostname: app2.test
     ports:
       - "2225:22"
+  db.test:
+    image: test-server
+    hostname: db.test
+    ports:
+      - "2226:22"

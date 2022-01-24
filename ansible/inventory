@@ -1,3 +1,12 @@
-[servers]
-server1.test
-server2.test
+# Application servers
+[app]
+app1.test
+app2.test
+
+# Database server
+[db]
+db.test
+
+[multi:children]
+app
+db
