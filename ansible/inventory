@@ -6,7 +6,3 @@ app2.test
 # Database server
 [db]
 db.test
-
-[multi:children]
-app
-db
