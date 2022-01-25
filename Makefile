@@ -21,12 +21,12 @@ command:
 
 playbooks:
 	cd ansible && \
-	ansible-playbook -v ./playbooks.yml
+	ansible-playbook -v ./main.yml
 
 test:
 	# make test create-folder
 	cd ansible && \
-	ansible-playbook -v ./playbooks/$(filter-out test, $(MAKECMDGOALS)).yml
+	ansible-playbook -v ./main/$(filter-out test, $(MAKECMDGOALS)).yml
 
 install-dependencies:
 	cd ansible && \
