@@ -5,7 +5,7 @@
 1. Replace ./docker/id_rsa.pub key
 1. `make install-dependencies`
 1. `make docker-build`
-1. `make docker-up`
+1. `make up`
 1. `make playbooks`
 
 links: 
