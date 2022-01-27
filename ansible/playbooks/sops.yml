@@ -2,8 +2,10 @@
 - name: Use SOPS
   hosts: all
   become: yes
+
   vars:
     user: nonroot
+
   tasks:
   - name: Add PEM private key
     ansible.builtin.copy:

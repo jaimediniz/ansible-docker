@@ -1,8 +1,10 @@
 ---
 - name: Test nonroot user
   hosts: all
+
   vars:
     PATH: "/home/nonroot/test"
+
   tasks:
     - name: Creates directory
       register: new

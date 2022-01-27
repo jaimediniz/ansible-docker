@@ -3,6 +3,7 @@
 - name: Ensure installation
   hosts: all
   become: yes
+
   tasks:
     - name: Display all variables/facts known for a host
       debug:
