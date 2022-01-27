@@ -26,7 +26,7 @@ playbooks:
 test:
 	# make test create-folder
 	cd ansible && \
-	ansible-playbook -v ./main/$(filter-out test, $(MAKECMDGOALS)).yml
+	ansible-playbook -v ./playbooks/$(filter-out test, $(MAKECMDGOALS)).yml
 
 install-dependencies:
 	cd ansible && \
