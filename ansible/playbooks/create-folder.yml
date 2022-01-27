@@ -2,8 +2,8 @@
 - name: Test nonroot user
   hosts: all
 
-  vars:
-    PATH: "/home/nonroot/test"
+  vars_files:
+    - ../vars/create-folder.yml
 
   tasks:
     - name: Creates directory

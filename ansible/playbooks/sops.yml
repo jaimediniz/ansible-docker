@@ -3,8 +3,8 @@
   hosts: all
   become: yes
 
-  vars:
-    user: nonroot
+  vars_files:
+    - ../vars/sops.yml
 
   tasks:
   - name: Add PEM private key
