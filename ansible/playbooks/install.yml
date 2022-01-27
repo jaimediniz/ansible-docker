@@ -2,20 +2,26 @@
 - name: Ensure installation
   hosts: all
   become: yes
-  tasks:
-    - name: Update_cache if the last one is more than 3600 seconds ago
+
+  vars_files:
+    - ../vars/install.yml
+
+  pre_tasks:
+    - name: Update cache if needed
       apt:
-        update_cache: yes
+        update_cache: true
         cache_valid_time: 3600
 
-    - name: Ensure jq is present
+  tasks:
+    - name: "Ensure {{ install_package }} is present"
       apt: 
-        name: jq
+        name: "{{ install_package }}"
         state: present
 
     - name: Download sops binary
       get_url:
-        url: https://github.com/mozilla/sops/releases/download/v3.7.1/sops-v3.7.1.linux
+        url: "https://github.com/mozilla/sops/releases/download/v{{ sops_version }}/sops-v{{ sops_version }}.linux"
+        checksum: "{{ sops_checksum }}"
         dest: /usr/bin/sops
         owner: root
         group: root
