@@ -5,6 +5,17 @@
   vars_files:
     - ../vars/create-folder.yml
 
+  handlers:
+  - name: print diff
+    debug:
+      var: new.diff
+      verbosity: 1
+  
+  - name: print ls
+    debug:
+      var: ls.stdout_lines
+      verbosity: 1
+
   tasks:
     - name: Creates directory
       register: new
@@ -12,15 +23,9 @@
         path: "{{PATH}}"
         state: directory
         recurse: yes
-
-    - debug:
-        var: new.diff
-        verbosity: 1
+      notify: print diff
 
     - name: Check folders permission
       command: "ls -la {{PATH}}"
       register: ls
-
-    - debug:
-        var: ls.stdout_lines
-        verbosity: 1
+      notify: print ls
