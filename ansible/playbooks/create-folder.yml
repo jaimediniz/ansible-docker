@@ -12,12 +12,13 @@
     - name: Creates directory
       register: new
       file:
-        path: "{{PATH}}"
+        path: "{{ PATH }}"
         state: directory
         recurse: yes
       notify: print diff
 
     - name: Check folders permission
-      command: "ls -la {{PATH}}"
+      command: "ls -la {{ PATH }}"
       register: ls
       notify: print ls
+      # changed_when: false

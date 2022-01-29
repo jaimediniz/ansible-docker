@@ -10,8 +10,9 @@
         verbosity: 4
 
     - name: Get uptime information
-      shell: /usr/bin/uptime
+      command: /usr/bin/uptime
       register: result
+      changed_when: false
 
     - name: Print uptime information
       debug:

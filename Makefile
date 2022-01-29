@@ -31,6 +31,11 @@ test:
 install-dependencies:
 	cd ansible && \
 	ansible-galaxy collection install community.sops
+	pip install ansible-lint
+
+lint:
+	cd ansible && \
+	ansible-lint
 
 %:
 	@true
