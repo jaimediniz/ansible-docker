@@ -1,5 +1,11 @@
 remove=command --become
 
+init:
+	make install-dependencies  && \
+	make docker-build  && \
+	make up  && \
+	make playbooks
+
 docker-build:
 	cd docker && \
 	docker build -t test-server .
