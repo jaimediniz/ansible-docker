@@ -6,15 +6,7 @@
     - ../vars/create-folder.yml
 
   handlers:
-  - name: print diff
-    debug:
-      var: new.diff
-      verbosity: 1
-  
-  - name: print ls
-    debug:
-      var: ls.stdout_lines
-      verbosity: 1
+    - import_tasks: ../handlers/create-folder.yml
 
   tasks:
     - name: Creates directory
