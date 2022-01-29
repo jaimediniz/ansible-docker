@@ -4,6 +4,7 @@ init:
 	make install-dependencies  && \
 	make docker-build  && \
 	make up  && \
+	make ping && \
 	make playbooks
 
 docker-build:
