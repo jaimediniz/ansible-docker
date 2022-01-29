@@ -14,7 +14,7 @@
 
   tasks:
     - name: "Ensure {{ install_package }} is present"
-      apt: 
+      apt:
         name: "{{ install_package }}"
         state: present
 

@@ -7,21 +7,21 @@
     - ../vars/sops.yml
 
   tasks:
-  - name: Add PEM private key
-    ansible.builtin.copy:
-      content: "{{ lookup('community.sops.sops','../resources/private_key.pem.sops', rstrip=false) }}"
-      dest: /home/{{ user }}/.ssh/private_key.pem
-      owner: "root"
-      group: "root"
-      mode: u+rw,go=r
-    no_log: true
+    - name: Add PEM private key
+      ansible.builtin.copy:
+        content: "{{ lookup('community.sops.sops','../resources/private_key.pem.sops', rstrip=false) }}"
+        dest: /home/{{ user }}/.ssh/private_key.pem
+        owner: "root"
+        group: "root"
+        mode: u+rw,go=r
+      no_log: true
 
-  - name: Load encrypted credentials
-    community.sops.load_vars:
-      file: ../resources/credentials.sops.yml
-      expressions: ignore
-    no_log: true
+    - name: Load encrypted credentials
+      community.sops.load_vars:
+        file: ../resources/credentials.sops.yml
+        expressions: ignore
+      no_log: true
 
-  - name: Show password
-    debug:
-      msg: "The password is {{ encrypted_password }}"
+    - name: Show password
+      debug:
+        msg: "The password is {{ encrypted_password }}"

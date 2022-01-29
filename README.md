@@ -8,6 +8,7 @@
 1. `make up`
 1. `make playbooks`
 
-links: 
- * https://davidcarrascal.medium.com/a-simple-ansible-playground-using-docker-eeb458cbba32
- * https://www.youtube.com/watch?v=goclfp6a2IQ
+links:
+
+- https://davidcarrascal.medium.com/a-simple-ansible-playground-using-docker-eeb458cbba32
+- https://www.youtube.com/watch?v=goclfp6a2IQ
