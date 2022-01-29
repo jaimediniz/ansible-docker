@@ -1,5 +1,11 @@
 # Ansible Local Test
 
+## Requirements
+
+1. Python
+1. Pip
+1. Docker
+
 ## Steps
 
 1. Replace ./docker/id_rsa.pub key
