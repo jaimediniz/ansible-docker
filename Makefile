@@ -44,5 +44,9 @@ lint:
 	cd ansible && \
 	ansible-lint
 
+new-role:
+	# make new-role test1
+	ansible-galaxy role init --init-path ./ansible/roles $(filter-out new-role, $(MAKECMDGOALS))
+
 %:
 	@true
