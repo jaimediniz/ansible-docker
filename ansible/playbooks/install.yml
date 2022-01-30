@@ -11,13 +11,14 @@
       apt:
         update_cache: true
         cache_valid_time: 3600
+      when: ansible_os_family == 'Ubuntu'
 
   roles:
     - role: roles/nodejs
 
   tasks:
     - name: "Ensure {{ install_package }} is present"
-      apt:
+      package:
         name: "{{ install_package }}"
         state: present
 
