@@ -9,7 +9,8 @@ init:
 
 docker-build:
 	cd docker && \
-	docker build -t test-server .
+	docker build -t ubuntu-test-server:latest -f ubuntu.Dockerfile . && \
+	docker build -t centos-test-server:latest -f centos.Dockerfile .
 
 up:
 	docker-compose -f ./docker/docker-compose.yaml up -d

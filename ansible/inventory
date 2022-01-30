@@ -1,8 +1,8 @@
-# Application servers
-[app]
-app1.test
-app2.test
+# Ubuntu servers
+[ubuntu]
+ubuntu1.test
+ubuntu2.test
 
-# Database server
-[db]
-db.test
+# Centos servers
+[centos]
+centos1.test

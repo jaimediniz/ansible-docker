@@ -1,17 +1,20 @@
 version: '2'
 services:
-  app1.test:
-    image: test-server
-    hostname: app1.test
+  ubuntu1.test:
+    image: ubuntu-test-server
+    hostname: ubuntu1.test
     ports:
       - "2224:22"
-  app2.test:
-    image: test-server
-    hostname: app2.test
+  ubuntu2.test:
+    image: ubuntu-test-server
+    hostname: ubuntu2.test
     ports:
       - "2225:22"
-  db.test:
-    image: test-server
-    hostname: db.test
+
+  centos1.test:
+    image: centos-test-server
+    hostname: centos1.test
     ports:
       - "2226:22"
+    volumes:
+      - ./id_rsa.pub:/${HOME}/.ssh/authorized_keys
