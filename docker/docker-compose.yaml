@@ -16,5 +16,3 @@ services:
     hostname: centos1.test
     ports:
       - "2226:22"
-    volumes:
-      - ./id_rsa.pub:/${HOME}/.ssh/authorized_keys
