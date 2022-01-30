@@ -42,7 +42,9 @@ install-dependencies:
 	ansible-galaxy install -r requirements.yml
 
 lint:
+	yamllint . || echo "Lint failed" && \
 	cd ansible && \
+	ansible-playbook main.yml --syntax-check || echo "Lint failed" && \
 	ansible-lint
 
 new-role:
