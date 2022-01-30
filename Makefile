@@ -38,7 +38,7 @@ test:
 
 install-dependencies:
 	cd ansible && \
-	pip install ansible ansible-lint && \
+	pip install ansible ansible-lint yamllint && \
 	ansible-galaxy install -r requirements.yml
 
 lint:
