@@ -43,7 +43,7 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
 # Add SSH key
 COPY --chown=${USER_NAME}:${GROUP_ID} \
      --chmod=440 \
-     id_rsa.pub ${HOME}/.ssh/authorized_keys
+     ./resources/id_rsa.pub ${HOME}/.ssh/authorized_keys
 
 USER ${USER_NAME}
 WORKDIR ${HOME}
