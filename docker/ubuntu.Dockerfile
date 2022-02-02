@@ -38,7 +38,9 @@ RUN ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime && \
     sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config && \
     chown -R ${USER_NAME}:${GROUP_ID} /etc/ssh && \
-    mkdir -p ${HOME}/.ssh
+    mkdir -p ${HOME}/.ssh  && \
+    chown -R ${USER_NAME}:${GROUP_ID} /var/run/ && \
+    chmod -R 700 /var/run/
 
 # Add SSH key
 COPY --chown=${USER_NAME}:${GROUP_ID} \
@@ -49,4 +51,4 @@ USER ${USER_NAME}
 WORKDIR ${HOME}
 
 EXPOSE 22 
-CMD ["/usr/sbin/sshd", "-D"]
+CMD ["/usr/sbin/sshd", "-D", "-e"]
