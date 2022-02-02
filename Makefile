@@ -2,15 +2,11 @@ remove=command --become
 
 init:
 	make install-dependencies  && \
-	make docker-build  && \
-	make up  && \
-	make ping && \
-	make playbooks
-
-docker-build:
 	cd docker && \
-	docker build -t ubuntu-test-server:latest -f ubuntu.Dockerfile . && \
-	docker build -t centos-test-server:latest -f centos.Dockerfile .
+	docker-compose build --progress tty && \
+	cd .. && \
+	make up  && \
+	make ping
 
 up:
 	docker-compose -f ./docker/docker-compose.yaml up -d
@@ -20,7 +16,7 @@ down:
 
 ping:
 	cd ansible && \
-	ansible all -m ping
+	ansible -v all -m ping
 
 command:
 	# make command apt-get install docker -- -y --become
