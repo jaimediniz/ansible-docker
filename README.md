@@ -8,7 +8,7 @@
 
 ## Steps
 
-1. Replace ./docker/id_rsa.pub key
+1. Replace ./docker/resources/id_rsa.pub key
 1. `make init`
 
 links:
