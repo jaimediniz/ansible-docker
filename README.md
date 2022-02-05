@@ -26,7 +26,7 @@ There are two networks connecting the containers
 - private
 - bastion
 
-The host machine uses the bastion network to the bastion, and it uses the bastion as proxy to connect to the other containers in the private network.
+The host machine connects to the bastion using the bastion network, and uses the bastion as proxy to connect to the other containers in the private network.
 
 ## Reference:
 
