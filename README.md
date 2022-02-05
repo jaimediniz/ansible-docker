@@ -15,7 +15,6 @@
 
 1. Ubuntu 20.04
     - ubuntu1.test
-    - ubuntu2.test
 1. Centos 8
     - centos1.test
 1. Alpine 3.11.6
