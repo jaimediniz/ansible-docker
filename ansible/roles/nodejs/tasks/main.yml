@@ -1,5 +1,0 @@
----
-- name: Install Node.js and npm
-  package:
-    name: npm
-    state: present
