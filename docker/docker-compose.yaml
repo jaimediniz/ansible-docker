@@ -12,17 +12,6 @@ services:
       - "22"
     networks:
       - private
-  ubuntu2.test:
-    image: ubuntu-test-server
-    build:
-      context: ./
-      dockerfile: ubuntu.Dockerfile
-    container_name: ubuntu2
-    hostname: ubuntu2.test
-    ports:
-      - "22"
-    networks:
-      - private
   centos1.test:
     image: centos-test-server
     build:

@@ -1,7 +1,6 @@
 # Ubuntu servers
 [ubuntu]
 ubuntu1.test
-ubuntu2.test
 
 # Centos servers
 [centos]

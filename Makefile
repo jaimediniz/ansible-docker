@@ -16,7 +16,7 @@ down:
 
 ping:
 	cd ansible && \
-	ansible -v all -m ping
+	ansible -vv all -m ping
 
 command:
 	# make command apt-get install docker -- -y --become
