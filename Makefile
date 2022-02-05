@@ -1,5 +1,4 @@
 init:
-	make install-dependencies  && \
 	cd docker && \
 	docker-compose build --progress tty && \
 	cd .. && \

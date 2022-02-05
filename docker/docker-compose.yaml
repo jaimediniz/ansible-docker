@@ -5,7 +5,7 @@ services:
     image: ubuntu-test-server
     build:
       context: ./
-      dockerfile: ubuntu.Dockerfile
+      dockerfile: ./images/ubuntu.Dockerfile
     container_name: ubuntu1
     hostname: ubuntu1.test
     ports:
@@ -16,7 +16,7 @@ services:
     image: centos-test-server
     build:
       context: ./
-      dockerfile: centos.Dockerfile
+      dockerfile: ./images/centos.Dockerfile
     container_name: centos1
     hostname: centos1.test
     ports:
@@ -28,7 +28,7 @@ services:
     image: bastion-test
     build:
       context: ./
-      dockerfile: bastion.Dockerfile
+      dockerfile: ./images/bastion.Dockerfile
     container_name: bastion
     hostname: bastion.test
     ports:
